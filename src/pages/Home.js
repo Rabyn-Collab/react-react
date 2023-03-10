@@ -1,47 +1,10 @@
-import React, { useState } from 'react'
-import DataShow from '../component/DataShow';
-
+import React from 'react'
 
 const Home = () => {
-  const [count, setCount] = useState(0);
-  const [data, setData] = useState([
-    {
-      "id": 1,
-      "email": "Eliseo@gardner.biz",
-      "body": "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"
-    },
-    {
-      "id": 2,
-      "email": "Jayne_Kuhic@sydney.com",
-      "body": "est natus enim nihil est dolore omnis voluptatem numquam\net omnis occaecati quod ullam at\nvoluptatem error expedita pariatur\nnihil sint nostrum voluptatem reiciendis et"
-    }]);
-
-
-
-
-  const increment = () => {
-    setCount(count + 1);
-  }
-
-
-
-
-  const removeComment = (id) => {
-    const newData = data.filter((d) => d.id !== id);
-    setData(newData);
-  }
-
   return (
     <div>
-
-      <h1 className='m-2 text-2xl'>{count}</h1>
-
-      <button
-        onClick={() => increment()}
-        className='shadow-2xl p-2'>Increment this number</button>
-
-      <DataShow comment={data} remove={removeComment} />
-
+      <h1>This is Home Page</h1>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas rem eligendi velit a dignissimos vero sed nostrum ut. Fuga magni sequi perspiciatis numquam. Itaque quasi facere natus ex deleniti vel incidunt voluptatem tempora adipisci tempore officiis corporis, atque, est facilis animi aliquid doloremque impedit delectus illum repellat aspernatur sit autem.</p>
     </div>
   )
 }
