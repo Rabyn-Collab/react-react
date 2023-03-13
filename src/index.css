@@ -9,3 +9,8 @@
 body {
   font-family: 'Nunito', sans-serif;
 }
+
+
+.buttons {
+  @apply bg-black text-white;
+}
