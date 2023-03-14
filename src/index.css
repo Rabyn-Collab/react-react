@@ -14,3 +14,7 @@ body {
 .buttons {
   @apply bg-black text-white;
 }
+
+.buttons:hover {
+  @apply text-green-300;
+}
