@@ -1,33 +1,54 @@
-import React, { useState } from 'react'
-import { Route, Routes } from 'react-router'
-import Home from './pages/Home'
-
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 
 const App = () => {
 
-  const [date, setDate] = useState(new Date());
+  const [data, setData] = useState([]);
+  const [err, setErr] = useState(null);
+  const [isLoad, setLoad] = useState(false);
 
 
-  setInterval(() => {
-    setDate(new Date());
-  }, 1000);
+
+  const getData = async () => {
+
+    try {
+      setLoad(true);
+      const response = await axios.get('https://jsonplaceholder.typicode.com/users');
+      setLoad(false);
+      setData(response.data);
+    } catch (err) {
+      setLoad(false);
+      setErr(err.message)
+    }
+  }
+
+  useEffect(() => {
+    getData();
+  }, []);
 
 
+  if (isLoad) {
+    return <h1>Loading ....</h1>
+  }
+
+  if (err) {
+    return <h1>{err}</h1>
+  }
+  console.log(data);
 
   return (
-    <>
-      <h1>{date.getHours()} :{date.getMinutes()}: {date.getSeconds()}</h1>
+    <div>
+      {data && data.map((d) => {
+        return <div key={d.id} className='shadow-2xl my-5'>
+          <h1>{d.email}</h1>
+          <h1>{d.name}</h1>
+          <p>{d.phone}</p>
+          <p>{d.address.city}</p>
+        </div>
+      })}
 
-      <Routes>
-        <Route path='/' element={<Home />} />
-
-      </Routes>
-
-    </>
+    </div>
   )
 }
-
-
-
 
 export default App
